@@ -1,6 +1,6 @@
-﻿int contaPunti=0,punteggio=0,contaVittore=0,contaPodi=0,conta5=0,contaSorpassi=0,contaPenalita=0,contaGare5=0;
-
-for (int i = 0; i < 2; i++)
+﻿int contaPunti=0,punteggio=0,contaVittore=0,contaPodi=0,conta5=0,contaSorpassi=0,contaPenalita=0,contaGare5=0,garaMax=0,max=0;
+float media5 = 0,mediaTempo=0, contaTempo = 0;
+for (int i = 0; i < 8; i++)
 {
     Console.WriteLine("Inserisci la posizione del pilota:\n " + "(giro:" + (i + 1) + ")");
     int posizione = int.Parse(Console.ReadLine());
@@ -45,6 +45,7 @@ for (int i = 0; i < 2; i++)
     {
         punteggio = (posizione * 2);
     }
+    
 
     // penalità e sorpassi
     if (penalita >= 3)
@@ -85,15 +86,28 @@ for (int i = 0; i < 2; i++)
         contaPenalita++;
     }
 
-}
+    contaTempo +=tempo;
 
-Console.WriteLine("il numero di punti totali è: " + contaPunti);
-Console.WriteLine("il numero di vittorie è: " + contaVittore);
-Console.WriteLine("il numero di podi è: " + contaPodi);
-Console.WriteLine("il numero di piazzamenti tra i primi 5 è: " + conta5);
-Console.WriteLine("il numero di sorpassi è: " + contaSorpassi);
-Console.WriteLine("il numero di penalità è: " + contaPenalita);
-Console.WriteLine("il numero di gare con più di 5 sorpassi è: " + contaGare5);
+    // massimo giro
+    if (i=1)
+    {
+        garaMax = i;
+        max = tempo;
+    }
+    if else (tempo < max)
+    {
+        garaMax = i;
+        max = tempo;
+    }
+    
+
+    Console.WriteLine("il numero di punti totali è: " + contaPunti);//p. 1
+Console.WriteLine("il numero di vittorie è: " + contaVittore);//p. 2
+Console.WriteLine("il numero di podi è: " + contaPodi);//p. 3
+Console.WriteLine("il numero di piazzamenti tra i primi 5 è: " + conta5);//p. 4
+Console.WriteLine("il numero di sorpassi è: " + contaSorpassi);//p. 5
+Console.WriteLine("il numero di penalità è: " + contaPenalita); //p. 6
+Console.WriteLine("il numero di gare con più di 5 sorpassi è: " + contaGare5); //p. 10
 // classifica pilota
 if (contaPunti >= 70)
     {
@@ -111,3 +125,9 @@ if (contaPunti >= 70)
     {
         Console.WriteLine("Deve migliorare");
     }
+media5 = ((float)conta5 / 8)*100;
+Console.WriteLine("La media dei piazzamenti tra i primi 5 è: " + media5 + "%"); //p.11
+mediaTempo = (contaTempo / 8);
+Console.WriteLine("La media del tempo impiegato è: " + mediaTempo + " secondi"); //p.7
+    Console.WriteLine("La gara con il miglior tempo è: " + garaMax); //p.9
+    Console.WriteLine("Il miglior tempo è: " + max + " secondi"); //p.8
